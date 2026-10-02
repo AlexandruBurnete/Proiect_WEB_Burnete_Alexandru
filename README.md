@@ -32,7 +32,7 @@ Proiect_Burnete_Alexandru/
   proiect.js
   repos.php
   api/
-    config.php        (NU se urcă pe GitHub)
+    config.php       
   profil/
     poza_Burnete_Alexandru.jpg
 ```
