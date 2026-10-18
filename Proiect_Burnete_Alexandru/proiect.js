@@ -1,6 +1,6 @@
 console.log("script.js loaded ✅");
 const username = "AlexandruBurnete";
-const API_URL = `https://api.github.com/users/${username}/repos?per_page=100`;
+const API_URL = `repos.php`;
 
 const projectsEl = document.getElementById("projects");
 const statusEl = document.getElementById("status");
