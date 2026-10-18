@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proiecte – Alexandru Burnete</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-blur bg-one"></div>
+  <div class="bg-blur bg-two"></div>
+  <header class="site-header">
+    <nav class="topbar" aria-label="Navigare principală">
+      <a class="brand" href="index.html">Alexandru Burnete</a>
+      <button class="hamburger" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link" href="index.html">Acasă</a></li>
+        <li><a class="nav-link" href="about.html">Despre mine</a></li>
+        <li><a class="nav-link" href="projects.html" aria-current="page">Proiecte</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <section id="proiecte">
+      <div class="section-head">
+        <div>
+          <h1 class="page-title">Proiecte GitHub</h1>
+          <p class="page-intro" style="margin:0">Încărcate automat din contul meu de GitHub.</p>
+        </div>
+        <div class="controls">
+          <label class="sr-only" for="searchInput" style="position:absolute;left:-9999px">Caută proiecte</label>
+          <input type="search" id="searchInput" placeholder="Caută după nume sau descriere...">
+          <label class="sr-only" for="sortSelect" style="position:absolute;left:-9999px">Sortare</label>
+          <select id="sortSelect">
+            <option value="updated">Sortare: cele mai recente</option>
+            <option value="stars">Sortare: cele mai apreciate</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Filtrare după limbaj"></div>
+      <div id="status" class="status" role="status" aria-live="polite">Se încarcă proiectele...</div>
+      <div id="projects" class="cards"></div>
+      <div id="load-more-container" class="load-more" hidden>
+        <button id="loadMoreBtn" class="btn primary" type="button">Arată mai multe proiecte</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
