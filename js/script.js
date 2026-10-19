@@ -32,7 +32,7 @@ function initReveal() {
         obs.unobserve(entry.target);
       }
     });
-  }, );
+  });
   document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 }
 
@@ -178,7 +178,7 @@ function renderFilters() {
       const desc = repo.description || "Fără descriere disponibilă";
       const updated = repo.updated_at ? new Date(repo.updated_at).toLocaleDateString("ro-RO") : "";
       return `
-<article class="project-card reveal visible">
+<article class="project-card">
           <div class="card-top">
             <h3>${(repo.name)}</h3>
             <span class="updated">${(updated)}</span>
@@ -194,7 +194,6 @@ function renderFilters() {
         </article>`;
     }).join("");
 
-    projectsEl.querySelectorAll(".reveal").forEach(observeReveal);
     loadMoreContainer.hidden = visible.length >= repos.length;
   }
 
