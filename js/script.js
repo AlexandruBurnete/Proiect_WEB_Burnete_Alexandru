@@ -98,7 +98,7 @@ function initProjects() {
   if (!projectsEl) return;
 
 const API_URL =
-  "https://api.github.com/users/AlexandruBurnete/repos?per_page=100&sort=updated";  
+  "https://api.github.com/users/AlexandruBurnete/repos?per_page=100";
   const itemsPerPage = 6;
   const statusEl = document.getElementById("status");
   const searchInput = document.getElementById("searchInput");
