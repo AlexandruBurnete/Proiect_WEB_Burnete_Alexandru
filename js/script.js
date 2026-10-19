@@ -1,9 +1,3 @@
-/* =========================================================
-
-/* Escapare text pentru innerHTML (previne injectarea de HTML) */
-const esc = s => String(s ?? "").replace(/[&<>"']/g,
-  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
 /* ---------- 1. Meniu hamburger ---------- */
 function initMobileMenu() {
   const hamburger = document.querySelector(".hamburger");
@@ -38,7 +32,7 @@ function initReveal() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, );
   document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 }
 
@@ -104,10 +98,10 @@ function initProjects() {
   if (!projectsEl) return;
 
 const API_URL =
-  "https://api.github.com/users/AlexandruBurnete/repos?per_page=100&sort=updated";  const itemsPerPage = 6;
+  "https://api.github.com/users/AlexandruBurnete/repos?per_page=100&sort=updated";  
+  const itemsPerPage = 6;
   const statusEl = document.getElementById("status");
   const searchInput = document.getElementById("searchInput");
-  const sortSelect = document.getElementById("sortSelect");
   const filtersEl = document.getElementById("filters");
   const loadMoreContainer = document.getElementById("load-more-container");
   const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -158,9 +152,6 @@ const API_URL =
         r.name.toLowerCase().includes(q) ||
         (r.description || "").toLowerCase().includes(q));
     }
-    repos.sort(sortSelect.value === "stars"
-      ? (a, b) => b.stargazers_count - a.stargazers_count
-      : (a, b) => new Date(b.updated_at) - new Date(a.updated_at));
     return repos;
   }
 
@@ -181,18 +172,16 @@ const API_URL =
       return `
         <article class="project-card reveal">
           <div class="card-top">
-            <h3>${esc(repo.name)}</h3>
-            <span class="updated">${esc(updated)}</span>
+            <h3>${(repo.name)}</h3>
+            <span class="updated">${(updated)}</span>
           </div>
-          <p>${esc(desc)}</p>
+          <p>${(desc)}</p>
           <div class="meta">
-            <span class="badge">💻 ${esc(repo.language || "Nespecificat")}</span>
-            <span class="badge">⭐ ${repo.stargazers_count ?? 0}</span>
-            <span class="badge">🍴 ${repo.forks_count ?? 0}</span>
+            <span class="badge">💻 ${(repo.language || "Nespecificat")}</span>
           </div>
           <div class="card-actions">
-            <a href="${esc(repo.html_url)}" target="_blank" rel="noopener noreferrer">Vezi codul</a>
-            ${repo.homepage ? `<a class="ghost" href="${esc(repo.homepage)}" target="_blank" rel="noopener noreferrer">Demo</a>` : ""}
+            <a href="${(repo.html_url)}" target="_blank" rel="noopener noreferrer">Vezi codul</a>
+            ${repo.homepage ? `<a class="ghost" href="${(repo.homepage)}" target="_blank" rel="noopener noreferrer">Demo</a>` : ""}
           </div>
         </article>`;
     }).join("");
@@ -229,7 +218,6 @@ const API_URL =
 
   loadMoreBtn.addEventListener("click", () => { currentPage++; renderProjects(); });
   searchInput.addEventListener("input", () => { currentPage = 1; renderProjects(); });
-  sortSelect.addEventListener("change", () => { currentPage = 1; renderProjects(); });
 
   loadRepos();
 }
