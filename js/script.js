@@ -118,20 +118,28 @@ const API_URL =
   function showError(message) {
     statusEl.innerHTML = `
       <div style="color:var(--danger);padding:12px 0">
-        <p>⚠️ ${esc(message)}</p>
+        <p>⚠️ ${(message)}</p>
         <button class="btn secondary" type="button" id="retryBtn">Încearcă din nou</button>
       </div>`;
     document.getElementById("retryBtn").addEventListener("click", loadRepos);
   }
 
-  function renderFilters() {
-    const languages = ["all", ...new Set(allRepos.map(r => r.language).filter(Boolean))];
-    filtersEl.innerHTML = languages.map(lang => `
-      <button type="button" class="${lang === activeLanguage ? "active" : ""}" data-lang="${esc(lang)}"
-              aria-pressed="${lang === activeLanguage}">
-        ${lang === "all" ? "Toate" : esc(lang)}
-      </button>`).join("");
-  }
+function renderFilters() {
+  const languages = [
+    "all",
+    ...new Set(allRepos.map(repo => repo.language).filter(Boolean))
+  ];
+
+  filtersEl.innerHTML = languages.map(lang => `
+    <button
+      type="button"
+      class="${lang === activeLanguage ? "active" : ""}"
+      data-lang="${lang}"
+      aria-pressed="${lang === activeLanguage}">
+      ${lang === "all" ? "Toate" : lang}
+    </button>
+  `).join("");
+}
 
   filtersEl.addEventListener("click", e => {
     const btn = e.target.closest("button[data-lang]");
